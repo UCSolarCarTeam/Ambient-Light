@@ -45,7 +45,7 @@ AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-AnnotateOrder=-1
+AnnotateOrder=0
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -62,7 +62,7 @@ AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-AnnotateOrder=-1
+AnnotateOrder=3
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -79,7 +79,7 @@ AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-AnnotateOrder=-1
+AnnotateOrder=2
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -96,7 +96,7 @@ AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-AnnotateOrder=-1
+AnnotateOrder=4
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -113,7 +113,7 @@ AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-AnnotateOrder=-1
+AnnotateOrder=1
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -957,6 +957,23 @@ GenerateClassCluster=0
 DocumentUniqueId=FPDFUQGL
 
 [Document55]
+DocumentPath=..\AltiumLibraries-1\Sensors\Schematic Libraries\LTR-329ALS-01.SchLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=AQKFORWG
+
+[Document56]
 DocumentPath=..\AltiumLibraries\Resistors\Schematic Libraries\Generic 0603 Resistor.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -973,7 +990,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=XJJRUQWW
 
-[Document56]
+[Document57]
 DocumentPath=..\AltiumLibraries\Resistors\Schematic Libraries\Generic 1206 Resistor.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -990,7 +1007,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=CLQBUKOS
 
-[Document57]
+[Document58]
 DocumentPath=..\AltiumLibraries\Sensors\Schematic Libraries\LTR-329ALS-01.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1007,7 +1024,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=AQKFORWG
 
-[Document58]
+[Document59]
 DocumentPath=..\AltiumLibraries\Switches\Schematic Libraries\C&K Slide Switch Vertical.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1024,7 +1041,24 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=LQNIFGCK
 
-[Document59]
+[Document60]
+DocumentPath=..\AltiumLibraries-1\Connectors\Schematic Libraries\CONN FFC FPC 4POS 0.50MM.SchLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=NWEKNTRY
+
+[Document61]
 DocumentPath=..\AltiumLibraries\Switches\Schematic Libraries\Slide Switch.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1041,7 +1075,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=FUHWYGHP
 
-[Document60]
+[Document62]
 DocumentPath=..\AltiumLibraries\Switches\Schematic Libraries\Surface Mount Push Button Switch.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1058,7 +1092,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=SQTNITHC
 
-[Document61]
+[Document63]
 DocumentPath=..\AltiumLibraries\potentiometers\Schematic Libraries\CTS Electronics Rotary Pot.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1075,7 +1109,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=CPBFGQQA
 
-[Document62]
+[Document64]
 DocumentPath=..\AltiumLibraries\Switches\Schematic Libraries\C&K Slide Switch 3-pin.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1092,7 +1126,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=IQANTPDN
 
-[Document63]
+[Document65]
 DocumentPath=..\AltiumLibraries\Switches\Schematic Libraries\CTS 12-Position DIP Switch.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1109,7 +1143,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=AVBYREPF
 
-[Document64]
+[Document66]
 DocumentPath=..\AltiumLibraries\Diodes\Schematic Libraries\ON Semi Schottky Diode.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1126,7 +1160,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=XBLIOIWH
 
-[Document65]
+[Document67]
 DocumentPath=..\AltiumLibraries\Headers\Schematic Libraries\2 Pin 100 mil Right Angle Header - Surface Mount.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1143,7 +1177,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=UGCMOPHG
 
-[Document66]
+[Document68]
 DocumentPath=..\AltiumLibraries\Power ICs\Schematic Libraries\Maxim MAX8211.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1160,7 +1194,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=NEUOBKQX
 
-[Document67]
+[Document69]
 DocumentPath=..\AltiumLibraries\LDOs\Schematic Libraries\3V3LDO_TPS73633DBVR_SOT23-5.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1177,7 +1211,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=HWBWVNDI
 
-[Document68]
+[Document70]
 DocumentPath=..\AltiumLibraries\Switches\PCB Libraries\CTS 12-Position DIP Switch.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1194,7 +1228,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=PGAMDVUE
 
-[Document69]
+[Document71]
 DocumentPath=..\AltiumLibraries\Sensors\PCB Libraries\LTR-329ALS-01.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1211,7 +1245,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=MHENYGEV
 
-[Document70]
+[Document72]
 DocumentPath=..\AltiumLibraries\Connectors\PCB Libraries\Phoenix Contact 1720466.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1228,7 +1262,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=OHCUHNOV
 
-[Document71]
+[Document73]
 DocumentPath=..\AltiumLibraries\Crystal Oscillators\PCB Libraries\Foxslf 8MHz Crystal.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1245,7 +1279,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=IFBDKMAV
 
-[Document72]
+[Document74]
 DocumentPath=..\AltiumLibraries\DCDC Converters\PCB Libraries\Recom R78E-1.0.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1262,7 +1296,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=HLAWRUIG
 
-[Document73]
+[Document75]
 DocumentPath=..\AltiumLibraries\DCDC Converters\PCB Libraries\Recom RO Series 1W DCDC.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1279,7 +1313,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=HBRCIXWM
 
-[Document74]
+[Document76]
 DocumentPath=..\AltiumLibraries\DCDC Converters\PCB Libraries\Vicor_MaxiMiniMicro_DCDC.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1296,7 +1330,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=TRANVBBW
 
-[Document75]
+[Document77]
 DocumentPath=..\AltiumLibraries\Diodes\PCB Libraries\ON Semi Schottky Diode.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1313,7 +1347,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=JMSJAJPY
 
-[Document76]
+[Document78]
 DocumentPath=..\AltiumLibraries\Diodes\PCB Libraries\SM74611 Smart Bypass Diode - TI.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1330,7 +1364,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=RGBOLRKS
 
-[Document77]
+[Document79]
 DocumentPath=..\AltiumLibraries\Diodes\PCB Libraries\TVS Diode.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1347,7 +1381,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=NQWIIVAN
 
-[Document78]
+[Document80]
 DocumentPath=..\AltiumLibraries\Diodes\PCB Libraries\Zener Diode.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1364,7 +1398,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=FNPARSHO
 
-[Document79]
+[Document81]
 DocumentPath=..\AltiumLibraries\Fuses\PCB Libraries\Schurter 5x20mm Fuse Holder.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1381,7 +1415,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=SBSPPIDU
 
-[Document80]
+[Document82]
 DocumentPath=..\AltiumLibraries\Headers\PCB Libraries\2 Pin 100 mil Right Angle Header - Surface Mount.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1398,7 +1432,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=EVDFHNNC
 
-[Document81]
+[Document83]
 DocumentPath=..\AltiumLibraries\Headers\PCB Libraries\2 Pin 100 mil Right Angle Header - Through Hole.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1415,7 +1449,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=DCOFKFLA
 
-[Document82]
+[Document84]
 DocumentPath=..\AltiumLibraries\Headers\PCB Libraries\24 Pin 100 mil Vertical Header - Through Hole.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1432,7 +1466,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=KLVLWCMI
 
-[Document83]
+[Document85]
 DocumentPath=..\AltiumLibraries\Headers\PCB Libraries\4 Pin 100 mil Vertical Header - Through Hole.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1449,7 +1483,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=IQPAMGND
 
-[Document84]
+[Document86]
 DocumentPath=..\AltiumLibraries\Headers\PCB Libraries\6 Pin 100 mil Right Angle Header - Surface Mount.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1466,7 +1500,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=AJSUKXFG
 
-[Document85]
+[Document87]
 DocumentPath=..\AltiumLibraries\Headers\PCB Libraries\6 Pin 100 mil Vertical Header - Through Hole.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1483,7 +1517,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=HFVBTABJ
 
-[Document86]
+[Document88]
 DocumentPath=..\AltiumLibraries\Headers\PCB Libraries\Samtec SWD+VCOM Header - J-Link.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1500,7 +1534,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=ESXQQATK
 
-[Document87]
+[Document89]
 DocumentPath=..\AltiumLibraries\LEDs\PCB Libraries\0603 LED.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1517,7 +1551,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=KDPTOGMG
 
-[Document88]
+[Document90]
 DocumentPath=..\AltiumLibraries\LEDs\PCB Libraries\SunLED TricolourLED.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1534,7 +1568,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=XVFOXETF
 
-[Document89]
+[Document91]
 DocumentPath=..\AltiumLibraries\LEDs\PCB Libraries\Wurth Red LED.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1551,7 +1585,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=XTJDPYUC
 
-[Document90]
+[Document92]
 DocumentPath=..\AltiumLibraries\MCU\PCB Libraries\STMicroelectronics STM32 F4.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1568,7 +1602,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=NFBLLSTB
 
-[Document91]
+[Document93]
 DocumentPath=..\AltiumLibraries\MCU\PCB Libraries\STMicroelectronics STM32 F41.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1585,7 +1619,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=UEVCABJQ
 
-[Document92]
+[Document94]
 DocumentPath=..\AltiumLibraries\MCU\PCB Libraries\STMicroelectronics STM32 F42.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1602,7 +1636,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=IFNCCJDE
 
-[Document93]
+[Document95]
 DocumentPath=..\AltiumLibraries\MOSFET\PCB Libraries\AOS DPAK PMOS.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1619,7 +1653,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=GFTBFMFD
 
-[Document94]
+[Document96]
 DocumentPath=..\AltiumLibraries\MOSFET\PCB Libraries\Fairchild PMOS - DPAK.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1636,7 +1670,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=FFGPIBDW
 
-[Document95]
+[Document97]
 DocumentPath=..\AltiumLibraries\MOSFET\PCB Libraries\Toshiba NMOS - SOT23-F.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1653,7 +1687,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=ALLIAGDD
 
-[Document96]
+[Document98]
 DocumentPath=..\AltiumLibraries\Op Amp\PCB Libraries\Microchip MCP6001UT Op Amp.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1670,7 +1704,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=SXNRANPI
 
-[Document97]
+[Document99]
 DocumentPath=..\AltiumLibraries\Other\PCB Libraries\Generic-32TQFP.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1687,7 +1721,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=EEJHDDMT
 
-[Document98]
+[Document100]
 DocumentPath=..\AltiumLibraries\Other\PCB Libraries\mbed LPC1768.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1704,7 +1738,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=AAKQQVWQ
 
-[Document99]
+[Document101]
 DocumentPath=..\AltiumLibraries\Power ICs\PCB Libraries\Maxim MAX8211.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1721,7 +1755,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=CFFPJVPC
 
-[Document100]
+[Document102]
 DocumentPath=..\AltiumLibraries\Power ICs\PCB Libraries\Maxim MAX8212.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1738,7 +1772,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=ATTQSHBW
 
-[Document101]
+[Document103]
 DocumentPath=..\AltiumLibraries\Relays\PCB Libraries\SPST-NC Relay - TE.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1755,7 +1789,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=AFGJWVXL
 
-[Document102]
+[Document104]
 DocumentPath=..\AltiumLibraries\Relays\PCB Libraries\SPST-NC Solid State Relay - IXYS.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1772,7 +1806,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=TJDIUOYP
 
-[Document103]
+[Document105]
 DocumentPath=..\AltiumLibraries\Relays\PCB Libraries\SPST-NO Solid State Relay - IXYS.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1789,7 +1823,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=QRJWOMME
 
-[Document104]
+[Document106]
 DocumentPath=..\AltiumLibraries\Resistors\PCB Libraries\Generic 0603 Resistor.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1806,7 +1840,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=YKJAUJJB
 
-[Document105]
+[Document107]
 DocumentPath=..\AltiumLibraries\Resistors\PCB Libraries\Generic 1206 Resistor.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1823,7 +1857,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=ATOAUVYT
 
-[Document106]
+[Document108]
 DocumentPath=..\AltiumLibraries\Switches\PCB Libraries\C&K Slide Switch Vertical.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1840,7 +1874,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=DTSTVEJI
 
-[Document107]
+[Document109]
 DocumentPath=..\AltiumLibraries\Switches\PCB Libraries\Slide Switch.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1857,7 +1891,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=VECAOUIX
 
-[Document108]
+[Document110]
 DocumentPath=..\AltiumLibraries\Switches\PCB Libraries\Surface Mount Push Button Switch.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1874,7 +1908,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=JMPGRDHR
 
-[Document109]
+[Document111]
 DocumentPath=..\AltiumLibraries\potentiometers\PCB Libraries\CTS Electronics Rotary Pot.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1891,7 +1925,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=YMSBSMMP
 
-[Document110]
+[Document112]
 DocumentPath=..\AltiumLibraries\Switches\PCB Libraries\C&K Slide Switch 3-pin.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1908,7 +1942,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=FBTAQYYN
 
-[Document111]
+[Document113]
 DocumentPath=..\AltiumLibraries\Connectors\PCB Libraries\Molex Microfit 3.0 8x1.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1925,7 +1959,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=VKXVHLRH
 
-[Document112]
+[Document114]
 DocumentPath=..\AltiumLibraries\Connectors\PCB Libraries\Molex Mini-Fit Jr 1x2.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1942,7 +1976,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=KHNMXCRW
 
-[Document113]
+[Document115]
 DocumentPath=..\AltiumLibraries\ADC\PCB Libraries\TexasInstruments_ADS7952SRHBT.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1959,7 +1993,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=QRBLMEYF
 
-[Document114]
+[Document116]
 DocumentPath=..\AltiumLibraries\Capacitors\PCB Libraries\Generic 0603 Capacitor.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1976,7 +2010,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=OEOITSAY
 
-[Document115]
+[Document117]
 DocumentPath=..\AltiumLibraries\Capacitors\PCB Libraries\Murata 2220 X1-Y2 Capacitor.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -1993,7 +2027,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=GIQPPMFS
 
-[Document116]
+[Document118]
 DocumentPath=..\AltiumLibraries\Communication ICs\PCB Libraries\FTDI FT232RL.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -2010,7 +2044,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=BOOMMBCI
 
-[Document117]
+[Document119]
 DocumentPath=..\AltiumLibraries\Communication ICs\PCB Libraries\Microchip MCP2562.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -2027,7 +2061,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=GNQXFYGF
 
-[Document118]
+[Document120]
 DocumentPath=..\AltiumLibraries\Communication ICs\PCB Libraries\Microchip_MCP2562_8SOIC.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -2044,7 +2078,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=OMAKMQUM
 
-[Document119]
+[Document121]
 DocumentPath=..\AltiumLibraries\Connectors\PCB Libraries\Amphenol MicroUSB.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -2061,7 +2095,24 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=HRLTMHYC
 
-[Document120]
+[Document122]
+DocumentPath=..\AltiumLibraries-1\Sensors\PCB Libraries\LTR-329ALS-01.PcbLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=MHENYGEV
+
+[Document123]
 DocumentPath=..\AltiumLibraries\Connectors\PCB Libraries\Amphenol USB-A.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -2078,7 +2129,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=FVEOQEIL
 
-[Document121]
+[Document124]
 DocumentPath=..\AltiumLibraries\Connectors\PCB Libraries\Amphenol_USB-miniB_SMT.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -2095,7 +2146,24 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=UTNLSWXB
 
-[Document122]
+[Document125]
+DocumentPath=..\AltiumLibraries-1\Connectors\PCB Libraries\CONN FFC FPC 4POS 0.50MM.PcbLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=QJQULYMF
+
+[Document126]
 DocumentPath=..\AltiumLibraries\Connectors\PCB Libraries\CONN FFC FPC 4POS 0.50MM.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -2112,7 +2180,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=QJQULYMF
 
-[Document123]
+[Document127]
 DocumentPath=..\AltiumLibraries\Connectors\PCB Libraries\CUI Barrel Jack.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -2129,7 +2197,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=AQIEXUDB
 
-[Document124]
+[Document128]
 DocumentPath=..\AltiumLibraries\Connectors\PCB Libraries\Molex MicroUSB - Don't Use.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -2146,7 +2214,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=MGCCNLBM
 
-[Document125]
+[Document129]
 DocumentPath=..\AltiumLibraries\Connectors\PCB Libraries\Molex Microfit 3.0 12x1.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -2163,7 +2231,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=ITGPLPGD
 
-[Document126]
+[Document130]
 DocumentPath=..\AltiumLibraries\Connectors\PCB Libraries\Molex Microfit 3.0 1x2.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -2180,7 +2248,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=MLMKFKCS
 
-[Document127]
+[Document131]
 DocumentPath=..\AltiumLibraries\Connectors\PCB Libraries\Molex Microfit 3.0 2x1.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -2197,7 +2265,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=DWPTBGLP
 
-[Document128]
+[Document132]
 DocumentPath=..\AltiumLibraries\Connectors\PCB Libraries\Molex Microfit 3.0 2x2.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -2214,7 +2282,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=QXPESXRU
 
-[Document129]
+[Document133]
 DocumentPath=..\AltiumLibraries\Connectors\PCB Libraries\Molex Microfit 3.0 3x2.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -2231,7 +2299,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=KMYXJDMF
 
-[Document130]
+[Document134]
 DocumentPath=..\AltiumLibraries\Connectors\PCB Libraries\Molex Microfit 3.0 4x2.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -2248,7 +2316,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=DKVLPYCB
 
-[Document131]
+[Document135]
 DocumentPath=..\AltiumLibraries\LDOs\PCB Libraries\3V3LDO_TPS73633DBVR_SOT23-5.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -2265,7 +2333,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=YNAXYHYC
 
-[Document132]
+[Document136]
 DocumentPath=MCU.Harness
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -2282,7 +2350,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document133]
+[Document137]
 DocumentPath=Other.Harness
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -2299,7 +2367,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document134]
+[Document138]
 DocumentPath=Connectors.Harness
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -2316,14 +2384,14 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
-[Document135]
+[Document139]
 DocumentPath=Sensor-Board.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-AnnotateOrder=-1
+AnnotateOrder=5
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -2333,7 +2401,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=PDISYDAC
 
-[Document136]
+[Document140]
 DocumentPath=Sensor-Board.Harness
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -3277,6 +3345,126 @@ NetClassSeparateForBusSections=0
 SelectedOnly=0
 UpdateVariants=1
 PartTypes=0
+ComponentLibIdentifierKind0=Library Name And Type
+ComponentLibraryIdentifier0=3V3LDO_TPS73633DBVR_SOT23-5.SchLib
+ComponentDesignItemID0=3V3LDO_TPS73633DBVR_SOT23-5
+ComponentSymbolReference0=3V3LDO_TPS73633DBVR_SOT23-5
+ComponentUpdate0=1
+ComponentIsDeviceSheet0=0
+ComponentLibIdentifierKind1=Library Name And Type
+ComponentLibraryIdentifier1=Capacitors.IntLib
+ComponentDesignItemID1=SCH_GENERIC_CAPACITOR_0603
+ComponentSymbolReference1=SCH_GENERIC_CAPACITOR_0603
+ComponentUpdate1=1
+ComponentIsDeviceSheet1=0
+ComponentLibIdentifierKind2=Library Name And Type
+ComponentLibraryIdentifier2=Crystal.SchLib
+ComponentDesignItemID2=Crystal
+ComponentSymbolReference2=Crystal
+ComponentUpdate2=1
+ComponentIsDeviceSheet2=0
+ComponentLibIdentifierKind3=Library Name And Type
+ComponentLibraryIdentifier3=Generic 0603 Capacitor.SchLib
+ComponentDesignItemID3=SCH_GENERIC_CAPACITOR_0603
+ComponentSymbolReference3=SCH_GENERIC_CAPACITOR_0603
+ComponentUpdate3=1
+ComponentIsDeviceSheet3=0
+ComponentLibIdentifierKind4=Library Name And Type
+ComponentLibraryIdentifier4=Generic 0603 Resistor.SchLib
+ComponentDesignItemID4=SCH_GENERIC_RESISTOR_0603
+ComponentSymbolReference4=SCH_GENERIC_RESISTOR_0603
+ComponentUpdate4=1
+ComponentIsDeviceSheet4=0
+ComponentLibIdentifierKind5=Library Name And Type
+ComponentLibraryIdentifier5=LTR-329ALS-01.SchLib
+ComponentDesignItemID5=LTR-329ALS-01
+ComponentSymbolReference5=LTR-329ALS-01
+ComponentUpdate5=1
+ComponentIsDeviceSheet5=0
+ComponentLibIdentifierKind6=Library Name And Type
+ComponentLibraryIdentifier6=MCP2562_SCH.SchLib
+ComponentDesignItemID6=MCP2562
+ComponentSymbolReference6=MCP2562
+ComponentUpdate6=1
+ComponentIsDeviceSheet6=0
+ComponentLibIdentifierKind7=Library Name And Type
+ComponentLibraryIdentifier7=Molex Microfit 3.0 3x2.SchLib
+ComponentDesignItemID7=SCH_MLX_MICROFIT_3X2
+ComponentSymbolReference7=SCH_MLX_MICROFIT_3X2
+ComponentUpdate7=1
+ComponentIsDeviceSheet7=0
+ComponentLibIdentifierKind8=Library Name And Type
+ComponentLibraryIdentifier8=Molex Mini-Fit Jr 1x2.SchLib
+ComponentDesignItemID8=Molex Mini-Fit 1x2
+ComponentSymbolReference8=Molex Mini-Fit 1x2
+ComponentUpdate8=1
+ComponentIsDeviceSheet8=0
+ComponentLibIdentifierKind9=Library Name And Type
+ComponentLibraryIdentifier9=ON Semi Schottky Diode - MBRM110LT1G.SchLib
+ComponentDesignItemID9=ON Semi Schottky Diode - MBRM110LT1G
+ComponentSymbolReference9=ON Semi Schottky Diode - MBRM110LT1G
+ComponentUpdate9=1
+ComponentIsDeviceSheet9=0
+ComponentLibIdentifierKind10=Library Name And Type
+ComponentLibraryIdentifier10=ON Semi Schottky Diode.SchLib
+ComponentDesignItemID10=ON Semi Schottky Diode - MBRM110LT1G
+ComponentSymbolReference10=ON Semi Schottky Diode - MBRM110LT1G
+ComponentUpdate10=1
+ComponentIsDeviceSheet10=0
+ComponentLibIdentifierKind11=Library Name And Type
+ComponentLibraryIdentifier11=PushButtonSwitch.SchLib
+ComponentDesignItemID11=PushButtonSwitch
+ComponentSymbolReference11=PushButtonSwitch
+ComponentUpdate11=1
+ComponentIsDeviceSheet11=0
+ComponentLibIdentifierKind12=Library Name And Type
+ComponentLibraryIdentifier12=R78E-1.0_DCDC_SCH.SchLib
+ComponentDesignItemID12=R78E-1.0
+ComponentSymbolReference12=R78E-1.0
+ComponentUpdate12=1
+ComponentIsDeviceSheet12=0
+ComponentLibIdentifierKind13=Library Name And Type
+ComponentLibraryIdentifier13=Resistors.IntLib
+ComponentDesignItemID13=SCH_GENERIC_RESISTOR_0603
+ComponentSymbolReference13=SCH_GENERIC_RESISTOR_0603
+ComponentUpdate13=1
+ComponentIsDeviceSheet13=0
+ComponentLibIdentifierKind14=Library Name And Type
+ComponentLibraryIdentifier14=SCH_GENERIC_RESISTOR_0603.SchLib
+ComponentDesignItemID14=SCH_GENERIC_RESISTOR_0603
+ComponentSymbolReference14=SCH_GENERIC_RESISTOR_0603
+ComponentUpdate14=1
+ComponentIsDeviceSheet14=0
+ComponentLibIdentifierKind15=Library Name And Type
+ComponentLibraryIdentifier15=SMD_0603_LED.SchLib
+ComponentDesignItemID15=SMD_0603_LED
+ComponentSymbolReference15=SMD_0603_LED
+ComponentUpdate15=1
+ComponentIsDeviceSheet15=0
+ComponentLibIdentifierKind16=Library Name And Type
+ComponentLibraryIdentifier16=STMicroelectronics STM32 F4.IntLib
+ComponentDesignItemID16=STM32F407VGT6
+ComponentSymbolReference16=STM32F407VGT6
+ComponentUpdate16=1
+ComponentIsDeviceSheet16=0
+ComponentLibIdentifierKind17=Library Name And Type
+ComponentLibraryIdentifier17=SWD+VCOM Header - J-Link.SchLib
+ComponentDesignItemID17=SWD/VCOM Header
+ComponentSymbolReference17=SWD/VCOM Header
+ComponentUpdate17=1
+ComponentIsDeviceSheet17=0
+ComponentLibIdentifierKind18=Library Name And Type
+ComponentLibraryIdentifier18=TricolourLED - SunLED - DK 1497-1225-2-ND.SchLib
+ComponentDesignItemID18=TriColourLED
+ComponentSymbolReference18=TriColourLED
+ComponentUpdate18=1
+ComponentIsDeviceSheet18=0
+ComponentLibIdentifierKind19=Library Name And Type
+ComponentLibraryIdentifier19=TVS Diode.SchLib
+ComponentDesignItemID19=TVS Diode
+ComponentSymbolReference19=TVS Diode
+ComponentUpdate19=1
+ComponentIsDeviceSheet19=0
 FullReplace=1
 UpdateDesignatorLock=1
 UpdatePartIDLock=1
@@ -3290,6 +3478,140 @@ RemoveParameters=0
 AddModels=1
 RemoveModels=1
 UpdateCurrentModels=1
+ParameterName0=Capacitance
+ParameterUpdate0=1
+ParameterName1=Comment
+ParameterUpdate1=1
+ParameterName2=Component Kind
+ParameterUpdate2=1
+ParameterName3=ComponentLink1Description
+ParameterUpdate3=1
+ParameterName4=ComponentLink1URL
+ParameterUpdate4=1
+ParameterName5=ComponentLink2Description
+ParameterUpdate5=1
+ParameterName6=ComponentLink2URL
+ParameterUpdate6=1
+ParameterName7=ComponentLink3Description
+ParameterUpdate7=1
+ParameterName8=ComponentLink3URL
+ParameterUpdate8=1
+ParameterName9=Core
+ParameterUpdate9=1
+ParameterName10=D/A Converter
+ParameterUpdate10=1
+ParameterName11=DatasheetVersion
+ParameterUpdate11=1
+ParameterName12=Description
+ParameterUpdate12=1
+ParameterName13=FLASH Size (Prog) (kB)
+ParameterUpdate13=1
+ParameterName14=Frequency
+ParameterUpdate14=1
+ParameterName15=I/Os (High Current)
+ParameterUpdate15=1
+ParameterName16=Internal RAM Size (kB)
+ParameterUpdate16=1
+ParameterName17=Library Reference
+ParameterUpdate17=1
+ParameterName18=Manufacturer
+ParameterUpdate18=1
+ParameterName19=Manufacturer ID
+ParameterUpdate19=1
+ParameterName20=Mounting Technology
+ParameterUpdate20=1
+ParameterName21=Operating Frequency(F) (Processor speed) (MHz)
+ParameterUpdate21=1
+ParameterName22=PackageDescription
+ParameterUpdate22=1
+ParameterName23=PackageReference
+ParameterUpdate23=1
+ParameterName24=PackageVersion
+ParameterUpdate24=1
+ParameterName25=Packing
+ParameterUpdate25=1
+ParameterName26=PartNumber
+ParameterUpdate26=1
+ParameterName27=Resistance
+ParameterUpdate27=1
+ParameterName28=Supplier 1
+ParameterUpdate28=1
+ParameterName29=Supplier 2
+ParameterUpdate29=1
+ParameterName30=Supplier 3
+ParameterUpdate30=1
+ParameterName31=Supplier 4
+ParameterUpdate31=1
+ParameterName32=Supplier Part Number 1
+ParameterUpdate32=1
+ParameterName33=Supplier Part Number 2
+ParameterUpdate33=1
+ParameterName34=Supplier Part Number 3
+ParameterUpdate34=1
+ParameterName35=Supplier Part Number 4
+ParameterUpdate35=1
+ParameterName36=Supply Voltage(Vcc) max (V)
+ParameterUpdate36=1
+ParameterName37=Supply Voltage(Vcc) min (V)
+ParameterUpdate37=1
+ParameterName38=Tolerance
+ParameterUpdate38=1
+ModelTypeGroup0=PCBLIB
+ModelTypeUpdate0=1
+ModelType0=PCBLIB
+ModelName0=CRYSTAL_8MHZ
+ModelUpdate0=1
+ModelType1=PCBLIB
+ModelName1=LTR-329ALS-01
+ModelUpdate1=1
+ModelType2=PCBLIB
+ModelName2=MCP2562
+ModelUpdate2=1
+ModelType3=PCBLIB
+ModelName3=Molex Mini-Fit Jr 2x1
+ModelUpdate3=1
+ModelType4=PCBLIB
+ModelName4=ON Semi Schottky Diode - MBRM110LT1G
+ModelUpdate4=1
+ModelType5=PCBLIB
+ModelName5=PCB_GENERIC_SMD_0603
+ModelUpdate5=1
+ModelType6=PCBLIB
+ModelName6=PCB_MLX_MICROFIT_3X2
+ModelUpdate6=1
+ModelType7=PCBLIB
+ModelName7=Push Button Switch
+ModelUpdate7=1
+ModelType8=PCBLIB
+ModelName8=R78-1.0
+ModelUpdate8=1
+ModelType9=PCBLIB
+ModelName9=Samtec TST-110-01-G-D
+ModelUpdate9=1
+ModelType10=PCBLIB
+ModelName10=SMD_0603_LED
+ModelUpdate10=1
+ModelType11=PCBLIB
+ModelName11=SOT95P280X145-5N
+ModelUpdate11=1
+ModelType12=PCBLIB
+ModelName12=STM-LQFP100_L
+ModelUpdate12=1
+ModelType13=PCBLIB
+ModelName13=STM-LQFP100_M
+ModelUpdate13=1
+ModelType14=PCBLIB
+ModelName14=STM-LQFP100_N
+ModelUpdate14=1
+ModelType15=PCBLIB
+ModelName15=STM-LQFP100_V
+ModelUpdate15=1
+ModelType16=PCBLIB
+ModelName16=TricolourLED - SunLED - DK  1497-1225-2-ND
+ModelUpdate16=1
+ModelType17=PCBLIB
+ModelName17=TVS Diode
+ModelUpdate17=1
 
 [DatabaseUpdateOptions]
 SelectedOnly=0
