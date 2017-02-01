@@ -1,0 +1,805 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD16\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2017-02-01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2:26:08 AM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc" class="file"><acronym title="C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc">C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">151</td></tr>
+</table>
+</td>
+</table><a name="IDUWTF0FEKPCIRH55XHFMI3FP0RCLGQPJQV4V5HRM3U40B0VJ0BH0I"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDPTJS0BCJ3FSEN3F4JN1BFXQAKKTZLKOOTMEYQBE5FCOWSS2ANDXL">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAUSLD0CZCXZGGYDLB4BT01Z1SEERIMTAQQXTCJGEXLQXO5VSDK4C">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID1QE40PFEY0K1DETOGEEWY1N3ICIIQQNZ0E0CD5J3GBV5EUKARQOJ">Silk to Silk (Clearance=10mil) (All),(All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDVMZ4RCJCP3OEEU5TCC35CUNFOEVIUMQOAUC1Z3OMBTLFEGOHT2LI">Silk To Solder Mask (Clearance=10mil) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDJLJTSAYZQOFIBFS4CRH5Q2IOUJ2JCOZNG4NFKEEMBMXIUAKPZDKM">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID2L4XAA1QISKSDKSXTCG1JISVQL3SCIZIVT3DKSNU0E0GLIZJG1NC">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDXT3US4W5BWT2IOLYRYWYCD4Q1JYLTIN5Q1C0SIPFM5JM3WDR5FY">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDS0HVYRQ14WWLCSIMTVE1LTSEKBW2SV2ALOKJBCOZOSCAWT4DXZTE">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID3QDGG34AISXMNAKF5Q5GJQPMKM23H513W5RR2KI4LPMONJ3LRRVH">Width Constraint (Min=10mil) (Max=10mil) (Preferred=10mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDLRW4YO1GYDVRP12YVCKA4NCOIKYVAV4Q0VIDWNM53HKF4ZTRKKDM">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDH25XZECHNKL5BYWXAAFS1POASPQ1AS5SSBC42WBBHV4JLYTDQ31">Clearance Constraint (Gap=10mil) (All),(All)</a></td>
+<td class="column2">42</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDEYJ3THKWL1N3JPC14EDXLUMVKMTM4UMBFAFLTEG0ELYSXEKBVXVN">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">105</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDYI1QTL2N2IILEIBFBBD2CA0PNTDDZN0T4KEYZBBDC4JXGF4N4D">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4YPIHDZLUMNJB5PVFS0NRXP0PKCE0MKKP2YDWFD5SX5B5YHPTM">Room Power (Bounding Region = (7585mil, 2965mil, 9625mil, 3365mil) (InComponentClass('Power'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDFC40KIJXYCBNHTLK0XHMJXWEUOEOFAMDG30KRDFJSQHW4AZNEVUN">Room Connectors (Bounding Region = (8391.89mil, 909.921mil, 9981.89mil, 2349.921mil) (InComponentClass('Connectors'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">151</td>
+</tr>
+</table><br><a name="ID1QE40PFEY0K1DETOGEEWY1N3ICIIQQNZ0E0CD5J3GBV5EUKARQOJ"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9325.351mil|Location2.X=9336.601mil|Location1.Y=3179.372mil|Location2.Y=3190.622mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9325.351mil|Location2.X=9336.601mil|Location1.Y=3179.372mil|Location2.Y=3190.622mil|Absolute=True">Silk To Silk Clearance Constraint: (9.224mil &lt; 10mil) Between Text "C10" (9171mil,3175mil) on Top Overlay And Text "D8" (9341mil,3172mil) on Top Overlay Silk Text to Silk Clearance [9.224mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDJLJTSAYZQOFIBFS4CRH5Q2IOUJ2JCOZNG4NFKEEMBMXIUAKPZDKM"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8609.824mil|Location2.X=8621.074mil|Location1.Y=3168.076mil|Location2.Y=3179.326mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8609.824mil|Location2.X=8621.074mil|Location1.Y=3168.076mil|Location2.Y=3179.326mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (5.779mil &lt; 10mil) Between Pad U4-2(8639.134mil,3155mil) on Top Layer And Pad U4-3(8639.134mil,3192.401mil) on Top Layer [Top Solder] Mask Sliver [5.779mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8609.824mil|Location2.X=8621.074mil|Location1.Y=3130.674mil|Location2.Y=3141.924mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8609.824mil|Location2.X=8621.074mil|Location1.Y=3130.674mil|Location2.Y=3141.924mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (5.78mil &lt; 10mil) Between Pad U4-1(8639.134mil,3117.598mil) on Top Layer And Pad U4-2(8639.134mil,3155mil) on Top Layer [Top Solder] Mask Sliver [5.78mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDXT3US4W5BWT2IOLYRYWYCD4Q1JYLTIN5Q1C0SIPFM5JM3WDR5FY"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8607.21mil|Location2.X=8726.57mil|Location1.Y=1050.241mil|Location2.Y=1169.601mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8607.21mil|Location2.X=8726.57mil|Location1.Y=1050.241mil|Location2.Y=1169.601mil|Absolute=True">Hole Size Constraint: (118.11mil &gt; 100mil) Pad P2-(8666.89mil,1109.921mil) on Multi-Layer Actual Hole Size = 118.11mil</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDH25XZECHNKL5BYWXAAFS1POASPQ1AS5SSBC42WBBHV4JLYTDQ31"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Clearance Constraint (Gap=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=3112.013mil|Location2.Y=3123.263mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=3112.013mil|Location2.Y=3123.263mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-6(3670.787mil,3107.795mil) on Top Layer And Pad U1-5(3670.787mil,3127.48mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=3092.328mil|Location2.Y=3103.578mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=3092.328mil|Location2.Y=3103.578mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-7(3670.787mil,3088.11mil) on Top Layer And Pad U1-6(3670.787mil,3107.795mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=3033.273mil|Location2.Y=3044.523mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=3033.273mil|Location2.Y=3044.523mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-10(3670.787mil,3029.055mil) on Top Layer And Pad U1-9(3670.787mil,3048.74mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=3013.588mil|Location2.Y=3024.838mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=3013.588mil|Location2.Y=3024.838mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-11(3670.787mil,3009.37mil) on Top Layer And Pad U1-10(3670.787mil,3029.055mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=2993.903mil|Location2.Y=3005.153mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=2993.903mil|Location2.Y=3005.153mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-12(3670.787mil,2989.685mil) on Top Layer And Pad U1-11(3670.787mil,3009.37mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=2974.218mil|Location2.Y=2985.468mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=2974.218mil|Location2.Y=2985.468mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-13(3670.787mil,2970mil) on Top Layer And Pad U1-12(3670.787mil,2989.685mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=2954.532mil|Location2.Y=2965.782mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=2954.532mil|Location2.Y=2965.782mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-14(3670.787mil,2950.315mil) on Top Layer And Pad U1-13(3670.787mil,2970mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=2934.847mil|Location2.Y=2946.097mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=2934.847mil|Location2.Y=2946.097mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-15(3670.787mil,2930.63mil) on Top Layer And Pad U1-14(3670.787mil,2950.315mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=2856.107mil|Location2.Y=2867.357mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=2856.107mil|Location2.Y=2867.357mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-19(3670.787mil,2851.89mil) on Top Layer And Pad U1-18(3670.787mil,2871.575mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=2836.422mil|Location2.Y=2847.672mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=2836.422mil|Location2.Y=2847.672mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-20(3670.787mil,2832.205mil) on Top Layer And Pad U1-19(3670.787mil,2851.89mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=2816.737mil|Location2.Y=2827.987mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=2816.737mil|Location2.Y=2827.987mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-21(3670.787mil,2812.52mil) on Top Layer And Pad U1-20(3670.787mil,2832.205mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=2777.367mil|Location2.Y=2788.617mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3629.729mil|Location2.X=3640.979mil|Location1.Y=2777.367mil|Location2.Y=2788.617mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-23(3670.787mil,2773.15mil) on Top Layer And Pad U1-22(3670.787mil,2792.835mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3737.997mil|Location2.X=3749.247mil|Location1.Y=2629.729mil|Location2.Y=2640.979mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3737.997mil|Location2.X=3749.247mil|Location1.Y=2629.729mil|Location2.Y=2640.979mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-27(3753.465mil,2670.787mil) on Top Layer And Pad U1-26(3733.78mil,2670.787mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3757.682mil|Location2.X=3768.932mil|Location1.Y=2629.729mil|Location2.Y=2640.979mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3757.682mil|Location2.X=3768.932mil|Location1.Y=2629.729mil|Location2.Y=2640.979mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-28(3773.15mil,2670.787mil) on Top Layer And Pad U1-27(3753.465mil,2670.787mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3777.367mil|Location2.X=3788.617mil|Location1.Y=2629.729mil|Location2.Y=2640.979mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3777.367mil|Location2.X=3788.617mil|Location1.Y=2629.729mil|Location2.Y=2640.979mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-29(3792.835mil,2670.787mil) on Top Layer And Pad U1-28(3773.15mil,2670.787mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3797.052mil|Location2.X=3808.302mil|Location1.Y=2629.729mil|Location2.Y=2640.979mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3797.052mil|Location2.X=3808.302mil|Location1.Y=2629.729mil|Location2.Y=2640.979mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-30(3812.52mil,2670.787mil) on Top Layer And Pad U1-29(3792.835mil,2670.787mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3816.737mil|Location2.X=3827.987mil|Location1.Y=2629.729mil|Location2.Y=2640.979mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3816.737mil|Location2.X=3827.987mil|Location1.Y=2629.729mil|Location2.Y=2640.979mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-31(3832.205mil,2670.787mil) on Top Layer And Pad U1-30(3812.52mil,2670.787mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3836.422mil|Location2.X=3847.672mil|Location1.Y=2629.729mil|Location2.Y=2640.979mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3836.422mil|Location2.X=3847.672mil|Location1.Y=2629.729mil|Location2.Y=2640.979mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-32(3851.89mil,2670.787mil) on Top Layer And Pad U1-31(3832.205mil,2670.787mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3856.107mil|Location2.X=3867.357mil|Location1.Y=2629.729mil|Location2.Y=2640.979mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3856.107mil|Location2.X=3867.357mil|Location1.Y=2629.729mil|Location2.Y=2640.979mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-33(3871.575mil,2670.787mil) on Top Layer And Pad U1-32(3851.89mil,2670.787mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4171.068mil|Location2.X=4182.318mil|Location1.Y=2629.729mil|Location2.Y=2640.979mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4171.068mil|Location2.X=4182.318mil|Location1.Y=2629.729mil|Location2.Y=2640.979mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-49(4186.535mil,2670.787mil) on Top Layer And Pad U1-48(4166.85mil,2670.787mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4190.753mil|Location2.X=4202.003mil|Location1.Y=2629.729mil|Location2.Y=2640.979mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4190.753mil|Location2.X=4202.003mil|Location1.Y=2629.729mil|Location2.Y=2640.979mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-50(4206.221mil,2670.787mil) on Top Layer And Pad U1-49(4186.535mil,2670.787mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4228.154mil|Location2.X=4239.404mil|Location1.Y=2737.997mil|Location2.Y=2749.247mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4228.154mil|Location2.X=4239.404mil|Location1.Y=2737.997mil|Location2.Y=2749.247mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-52(4269.213mil,2753.465mil) on Top Layer And Pad U1-51(4269.213mil,2733.78mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4228.154mil|Location2.X=4239.404mil|Location1.Y=2757.682mil|Location2.Y=2768.932mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4228.154mil|Location2.X=4239.404mil|Location1.Y=2757.682mil|Location2.Y=2768.932mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-53(4269.213mil,2773.15mil) on Top Layer And Pad U1-52(4269.213mil,2753.465mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4228.154mil|Location2.X=4239.404mil|Location1.Y=3052.958mil|Location2.Y=3064.208mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4228.154mil|Location2.X=4239.404mil|Location1.Y=3052.958mil|Location2.Y=3064.208mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-68(4269.213mil,3068.425mil) on Top Layer And Pad U1-67(4269.213mil,3048.74mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4228.154mil|Location2.X=4239.404mil|Location1.Y=3072.643mil|Location2.Y=3083.893mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4228.154mil|Location2.X=4239.404mil|Location1.Y=3072.643mil|Location2.Y=3083.893mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-69(4269.213mil,3088.11mil) on Top Layer And Pad U1-68(4269.213mil,3068.425mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4228.154mil|Location2.X=4239.404mil|Location1.Y=3092.328mil|Location2.Y=3103.578mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4228.154mil|Location2.X=4239.404mil|Location1.Y=3092.328mil|Location2.Y=3103.578mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-70(4269.213mil,3107.795mil) on Top Layer And Pad U1-69(4269.213mil,3088.11mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4228.154mil|Location2.X=4239.404mil|Location1.Y=3131.698mil|Location2.Y=3142.948mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4228.154mil|Location2.X=4239.404mil|Location1.Y=3131.698mil|Location2.Y=3142.948mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-72(4269.213mil,3147.165mil) on Top Layer And Pad U1-71(4269.213mil,3127.48mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4228.154mil|Location2.X=4239.404mil|Location1.Y=3151.383mil|Location2.Y=3162.633mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4228.154mil|Location2.X=4239.404mil|Location1.Y=3151.383mil|Location2.Y=3162.633mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-73(4269.213mil,3166.85mil) on Top Layer And Pad U1-72(4269.213mil,3147.165mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4228.154mil|Location2.X=4239.404mil|Location1.Y=3171.068mil|Location2.Y=3182.318mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4228.154mil|Location2.X=4239.404mil|Location1.Y=3171.068mil|Location2.Y=3182.318mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-74(4269.213mil,3186.535mil) on Top Layer And Pad U1-73(4269.213mil,3166.85mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4228.154mil|Location2.X=4239.404mil|Location1.Y=3190.753mil|Location2.Y=3202.003mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4228.154mil|Location2.X=4239.404mil|Location1.Y=3190.753mil|Location2.Y=3202.003mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-75(4269.213mil,3206.22mil) on Top Layer And Pad U1-74(4269.213mil,3186.535mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4190.753mil|Location2.X=4202.003mil|Location1.Y=3228.155mil|Location2.Y=3239.405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4190.753mil|Location2.X=4202.003mil|Location1.Y=3228.155mil|Location2.Y=3239.405mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-77(4186.535mil,3269.213mil) on Top Layer And Pad U1-76(4206.221mil,3269.213mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3954.532mil|Location2.X=3965.782mil|Location1.Y=3228.155mil|Location2.Y=3239.405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3954.532mil|Location2.X=3965.782mil|Location1.Y=3228.155mil|Location2.Y=3239.405mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-89(3950.315mil,3269.213mil) on Top Layer And Pad U1-88(3970mil,3269.213mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3934.847mil|Location2.X=3946.097mil|Location1.Y=3228.155mil|Location2.Y=3239.405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3934.847mil|Location2.X=3946.097mil|Location1.Y=3228.155mil|Location2.Y=3239.405mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-90(3930.63mil,3269.213mil) on Top Layer And Pad U1-89(3950.315mil,3269.213mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3895.477mil|Location2.X=3906.727mil|Location1.Y=3228.155mil|Location2.Y=3239.405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3895.477mil|Location2.X=3906.727mil|Location1.Y=3228.155mil|Location2.Y=3239.405mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-92(3891.26mil,3269.213mil) on Top Layer And Pad U1-91(3910.945mil,3269.213mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3875.792mil|Location2.X=3887.042mil|Location1.Y=3228.155mil|Location2.Y=3239.405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3875.792mil|Location2.X=3887.042mil|Location1.Y=3228.155mil|Location2.Y=3239.405mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-93(3871.575mil,3269.213mil) on Top Layer And Pad U1-92(3891.26mil,3269.213mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3856.107mil|Location2.X=3867.357mil|Location1.Y=3228.155mil|Location2.Y=3239.405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3856.107mil|Location2.X=3867.357mil|Location1.Y=3228.155mil|Location2.Y=3239.405mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-94(3851.89mil,3269.213mil) on Top Layer And Pad U1-93(3871.575mil,3269.213mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3836.422mil|Location2.X=3847.672mil|Location1.Y=3228.155mil|Location2.Y=3239.405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3836.422mil|Location2.X=3847.672mil|Location1.Y=3228.155mil|Location2.Y=3239.405mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-95(3832.205mil,3269.213mil) on Top Layer And Pad U1-94(3851.89mil,3269.213mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3757.682mil|Location2.X=3768.932mil|Location1.Y=3228.155mil|Location2.Y=3239.405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3757.682mil|Location2.X=3768.932mil|Location1.Y=3228.155mil|Location2.Y=3239.405mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-99(3753.465mil,3269.213mil) on Top Layer And Pad U1-98(3773.15mil,3269.213mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3737.997mil|Location2.X=3749.247mil|Location1.Y=3228.155mil|Location2.Y=3239.405mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3737.997mil|Location2.X=3749.247mil|Location1.Y=3228.155mil|Location2.Y=3239.405mil|Absolute=True">Clearance Constraint: (7.874mil &lt; 10mil) Between Pad U1-100(3733.78mil,3269.213mil) on Top Layer And Pad U1-99(3753.465mil,3269.213mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9066.58mil|Location2.X=9077.83mil|Location1.Y=2184.651mil|Location2.Y=2195.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9066.58mil|Location2.X=9077.83mil|Location1.Y=2184.651mil|Location2.Y=2195.901mil|Absolute=True">Clearance Constraint: (5.906mil &lt; 10mil) Between Pad P4-2(9082.047mil,2205.039mil) on Top Layer And Pad P4-1(9062.362mil,2205.039mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9086.265mil|Location2.X=9097.515mil|Location1.Y=2184.651mil|Location2.Y=2195.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9086.265mil|Location2.X=9097.515mil|Location1.Y=2184.651mil|Location2.Y=2195.901mil|Absolute=True">Clearance Constraint: (5.906mil &lt; 10mil) Between Pad P4-3(9101.732mil,2205.039mil) on Top Layer And Pad P4-2(9082.047mil,2205.039mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9105.95mil|Location2.X=9117.2mil|Location1.Y=2184.651mil|Location2.Y=2195.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9105.95mil|Location2.X=9117.2mil|Location1.Y=2184.651mil|Location2.Y=2195.901mil|Absolute=True">Clearance Constraint: (5.906mil &lt; 10mil) Between Pad P4-4(9121.417mil,2205.039mil) on Top Layer And Pad P4-3(9101.732mil,2205.039mil) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDEYJ3THKWL1N3JPC14EDXLUMVKMTM4UMBFAFLTEG0ELYSXEKBVXVN"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.874mil|Location2.X=9763.39mil|Location1.Y=1793.421mil|Location2.Y=3078.331mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.874mil|Location2.X=9763.39mil|Location1.Y=1793.421mil|Location2.Y=3078.331mil|Absolute=True">Un-Routed Net Constraint: Net UART1_TX Between Pad U1-68(4269.213mil,3068.425mil) on Top Layer And Pad P1-5(9726.89mil,1829.921mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.874mil|Location2.X=9763.39mil|Location1.Y=1193.421mil|Location2.Y=3098.016mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.874mil|Location2.X=9763.39mil|Location1.Y=1193.421mil|Location2.Y=3098.016mil|Absolute=True">Un-Routed Net Constraint: Net UART1_RX Between Pad U1-69(4269.213mil,3088.11mil) on Top Layer And Pad P1-17(9726.89mil,1229.921mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3940.41mil|Location2.X=9763.39mil|Location1.Y=1393.421mil|Location2.Y=3314.551mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3940.41mil|Location2.X=9763.39mil|Location1.Y=1393.421mil|Location2.Y=3314.551mil|Absolute=True">Un-Routed Net Constraint: Net SWO Between Pad U1-89(3950.315mil,3269.213mil) on Top Layer And Pad P1-13(9726.89mil,1429.921mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.874mil|Location2.X=9763.39mil|Location1.Y=1693.421mil|Location2.Y=3157.071mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.874mil|Location2.X=9763.39mil|Location1.Y=1693.421mil|Location2.Y=3157.071mil|Absolute=True">Un-Routed Net Constraint: Net SWDIO Between Pad U1-72(4269.213mil,3147.165mil) on Top Layer And Pad P1-7(9726.89mil,1729.921mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4196.315mil|Location2.X=9763.39mil|Location1.Y=1593.421mil|Location2.Y=3314.551mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4196.315mil|Location2.X=9763.39mil|Location1.Y=1593.421mil|Location2.Y=3314.551mil|Absolute=True">Un-Routed Net Constraint: Net SWCLK Between Pad U1-76(4206.221mil,3269.213mil) on Top Layer And Pad P1-9(9726.89mil,1629.921mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8401.63mil|Location2.X=8693.37mil|Location1.Y=4006.63mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8401.63mil|Location2.X=8693.37mil|Location1.Y=4006.63mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net SCLK Between Pad X1-1(8445mil,4050mil) on Multi-Layer And Pad C1-2(8679.528mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=8488.37mil|Location1.Y=2979.78mil|Location2.Y=4093.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=8488.37mil|Location1.Y=2979.78mil|Location2.Y=4093.37mil|Absolute=True">Un-Routed Net Constraint: Net SCLK Between Pad U1-12(3670.787mil,2989.685mil) on Top Layer And Pad X1-1(8445mil,4050mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3802.614mil|Location2.X=7109.315mil|Location1.Y=2625.449mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3802.614mil|Location2.X=7109.315mil|Location1.Y=2625.449mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net RED_LED Between Pad U1-30(3812.52mil,2670.787mil) on Top Layer And Pad R6-1(7095.472mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8771.63mil|Location2.X=8982.819mil|Location1.Y=4278.599mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8771.63mil|Location2.X=8982.819mil|Location1.Y=4278.599mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net NRST Between Pad C3-1(8785.472mil,4336.063mil) on Top Layer And Pad SW1-1(8963.071mil,4316.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8943.323mil|Location2.X=9229.315mil|Location1.Y=4278.599mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8943.323mil|Location2.X=9229.315mil|Location1.Y=4278.599mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net NRST Between Pad SW1-1(8963.071mil,4316.063mil) on Top Layer And Pad R4-1(9215.472mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9201.63mil|Location2.X=9763.39mil|Location1.Y=1293.421mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9201.63mil|Location2.X=9763.39mil|Location1.Y=1293.421mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net NRST Between Pad R4-1(9215.472mil,4336.063mil) on Top Layer And Pad P1-15(9726.89mil,1329.921mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=8799.315mil|Location1.Y=2940.41mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=8799.315mil|Location1.Y=2940.41mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net NRST Between Pad U1-14(3670.787mil,2950.315mil) on Top Layer And Pad C3-1(8785.472mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9346.512mil|Location2.X=9603.37mil|Location1.Y=3087.102mil|Location2.Y=3129.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9346.512mil|Location2.X=9603.37mil|Location1.Y=3087.102mil|Location2.Y=3129.748mil|Absolute=True">Un-Routed Net Constraint: Net NetD8_2 Between Pad D8-2(9360.354mil,3106.85mil) on Top Layer And Pad R8-1(9589.528mil,3110mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7820.685mil|Location2.X=7997.504mil|Location1.Y=4297.89mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7820.685mil|Location2.X=7997.504mil|Location1.Y=4297.89mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net NetD5_3 Between Pad R3-2(7834.528mil,4336.063mil) on Top Layer And Pad D5-3(7969.882mil,4319.606mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7310.685mil|Location2.X=7997.504mil|Location1.Y=4240.803mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7310.685mil|Location2.X=7997.504mil|Location1.Y=4240.803mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net NetD5_2 Between Pad R5-2(7324.528mil,4336.063mil) on Top Layer And Pad D5-2(7969.882mil,4262.52mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7140.685mil|Location2.X=8107.74mil|Location1.Y=4240.803mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7140.685mil|Location2.X=8107.74mil|Location1.Y=4240.803mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net NetD5_1 Between Pad R6-2(7154.528mil,4336.063mil) on Top Layer And Pad D5-1(8080.118mil,4262.52mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8507.181mil|Location2.X=9204.315mil|Location1.Y=3090.252mil|Location2.Y=3208.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8507.181mil|Location2.X=9204.315mil|Location1.Y=3090.252mil|Location2.Y=3208.213mil|Absolute=True">Un-Routed Net Constraint: Net NetC10_2 Between Pad U4-4(8530.866mil,3192.401mil) on Top Layer And Pad C10-2(9190.472mil,3110mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4176.63mil|Location2.X=7678.37mil|Location1.Y=2625.449mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4176.63mil|Location2.X=7678.37mil|Location1.Y=2625.449mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net NetC5_2 Between Pad U1-49(4186.535mil,2670.787mil) on Top Layer And Pad C5-2(7664.528mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.874mil|Location2.X=7508.37mil|Location1.Y=3156.945mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.874mil|Location2.X=7508.37mil|Location1.Y=3156.945mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net NetC4_2 Between Pad U1-73(4269.213mil,3166.85mil) on Top Layer And Pad C4-2(7494.528mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8250.685mil|Location2.X=8488.37mil|Location1.Y=4198.756mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8250.685mil|Location2.X=8488.37mil|Location1.Y=4198.756mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net NetC2_2 Between Pad C2-2(8264.528mil,4336.063mil) on Top Layer And Pad X1-2(8445mil,4242.126mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=8278.37mil|Location1.Y=2960.095mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=8278.37mil|Location1.Y=2960.095mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net NetC2_2 Between Pad U1-13(3670.787mil,2970mil) on Top Layer And Pad C2-2(8264.528mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9090.843mil|Location2.X=9399.315mil|Location1.Y=2186.276mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9090.843mil|Location2.X=9399.315mil|Location1.Y=2186.276mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net I2C1_SDA Between Pad P4-3(9101.732mil,2205.039mil) on Top Layer And Pad R1-1(9385.472mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3861.669mil|Location2.X=9112.622mil|Location1.Y=2186.276mil|Location2.Y=3314.551mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3861.669mil|Location2.X=9112.622mil|Location1.Y=2186.276mil|Location2.Y=3314.551mil|Absolute=True">Un-Routed Net Constraint: Net I2C1_SDA Between Pad U1-93(3871.575mil,3269.213mil) on Top Layer And Pad P4-3(9101.732mil,2205.039mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9071.158mil|Location2.X=9569.315mil|Location1.Y=2186.276mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9071.158mil|Location2.X=9569.315mil|Location1.Y=2186.276mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net I2C1_SCL Between Pad P4-2(9082.047mil,2205.039mil) on Top Layer And Pad R2-1(9555.472mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3881.354mil|Location2.X=9092.937mil|Location1.Y=2186.276mil|Location2.Y=3314.551mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3881.354mil|Location2.X=9092.937mil|Location1.Y=2186.276mil|Location2.Y=3314.551mil|Absolute=True">Un-Routed Net Constraint: Net I2C1_SCL Between Pad U1-92(3891.26mil,3269.213mil) on Top Layer And Pad P4-2(9082.047mil,2205.039mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3822.299mil|Location2.X=7279.315mil|Location1.Y=2625.449mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3822.299mil|Location2.X=7279.315mil|Location1.Y=2625.449mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net GREEN_LED Between Pad U1-31(3832.205mil,2670.787mil) on Top Layer And Pad R5-1(7265.472mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3743.559mil|Location2.X=3861.795mil|Location1.Y=3223.874mil|Location2.Y=3314.551mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3743.559mil|Location2.X=3861.795mil|Location1.Y=3223.874mil|Location2.Y=3314.551mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U1-99(3753.465mil,3269.213mil) on Top Layer And Pad U1-94(3851.89mil,3269.213mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9790.39mil|Location2.X=9863.39mil|Location1.Y=1793.421mil|Location2.Y=1966.421mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9790.39mil|Location2.X=9863.39mil|Location1.Y=1793.421mil|Location2.Y=1966.421mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P1-6(9826.89mil,1829.921mil) on Multi-Layer And Pad P1-4(9826.89mil,1929.921mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9790.39mil|Location2.X=9863.39mil|Location1.Y=1593.421mil|Location2.Y=1766.421mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9790.39mil|Location2.X=9863.39mil|Location1.Y=1593.421mil|Location2.Y=1766.421mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P1-10(9826.89mil,1629.921mil) on Multi-Layer And Pad P1-8(9826.89mil,1729.921mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9790.39mil|Location2.X=9863.39mil|Location1.Y=1493.421mil|Location2.Y=1666.421mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9790.39mil|Location2.X=9863.39mil|Location1.Y=1493.421mil|Location2.Y=1666.421mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P1-12(9826.89mil,1529.921mil) on Multi-Layer And Pad P1-10(9826.89mil,1629.921mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8052.496mil|Location2.X=8219.315mil|Location1.Y=4297.89mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8052.496mil|Location2.X=8219.315mil|Location1.Y=4297.89mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad D5-4(8080.118mil,4319.606mil) on Top Layer And Pad C2-1(8205.472mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8795.685mil|Location2.X=8984.315mil|Location1.Y=3090.252mil|Location2.Y=3129.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8795.685mil|Location2.X=8984.315mil|Location1.Y=3090.252mil|Location2.Y=3129.748mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C6-1(8809.528mil,3110mil) on Top Layer And Pad C12-2(8970.472mil,3110mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9247.142mil|Location2.X=9456.638mil|Location1.Y=2101.866mil|Location2.Y=2141.362mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9247.142mil|Location2.X=9456.638mil|Location1.Y=2101.866mil|Location2.Y=2141.362mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad D3-2(9266.89mil,2121.614mil) on Top Layer And Pad D4-2(9436.89mil,2121.614mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10481.63mil|Location2.X=10679.315mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10481.63mil|Location2.X=10679.315mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C7-1(10495.472mil,4336.063mil) on Top Layer And Pad C8-1(10665.472mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10651.63mil|Location2.X=10849.315mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10651.63mil|Location2.X=10849.315mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C8-1(10665.472mil,4336.063mil) on Top Layer And Pad C9-1(10835.472mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7421.63mil|Location2.X=7619.315mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7421.63mil|Location2.X=7619.315mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C4-1(7435.472mil,4336.063mil) on Top Layer And Pad C5-1(7605.472mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10821.63mil|Location2.X=11019.315mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10821.63mil|Location2.X=11019.315mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C9-1(10835.472mil,4336.063mil) on Top Layer And Pad C13-1(11005.472mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=3716.126mil|Location1.Y=2822.299mil|Location2.Y=3038.961mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=3716.126mil|Location1.Y=2822.299mil|Location2.Y=3038.961mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U1-20(3670.787mil,2832.205mil) on Top Layer And Pad U1-10(3670.787mil,3029.055mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8615.449mil|Location2.X=8823.37mil|Location1.Y=3090.252mil|Location2.Y=3170.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8615.449mil|Location2.X=8823.37mil|Location1.Y=3090.252mil|Location2.Y=3170.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U4-2(8639.134mil,3155mil) on Top Layer And Pad C6-1(8809.528mil,3110mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10991.63mil|Location2.X=11239.315mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10991.63mil|Location2.X=11239.315mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C13-1(11005.472mil,4336.063mil) on Top Layer And Pad C14-1(11225.472mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11431.63mil|Location2.X=11679.315mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11431.63mil|Location2.X=11679.315mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C15-1(11445.472mil,4336.063mil) on Top Layer And Pad C16-1(11665.472mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11651.63mil|Location2.X=11899.315mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11651.63mil|Location2.X=11899.315mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C16-1(11665.472mil,4336.063mil) on Top Layer And Pad C17-1(11885.472mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8606.63mil|Location2.X=8858.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8606.63mil|Location2.X=8858.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C1-1(8620.472mil,4336.063mil) on Top Layer And Pad C3-2(8844.528mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8877.89mil|Location2.X=9132.307mil|Location1.Y=2165.921mil|Location2.Y=2223.803mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8877.89mil|Location2.X=9132.307mil|Location1.Y=2165.921mil|Location2.Y=2223.803mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U2-8(8911.89mil,2189.921mil) on Multi-Layer And Pad P4-4(9121.417mil,2205.039mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=3763.37mil|Location1.Y=2625.449mil|Location2.Y=2842.11mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=3763.37mil|Location1.Y=2625.449mil|Location2.Y=2842.11mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U1-20(3670.787mil,2832.205mil) on Top Layer And Pad U1-27(3753.465mil,2670.787mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8830.685mil|Location2.X=9116.677mil|Location1.Y=4278.599mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8830.685mil|Location2.X=9116.677mil|Location1.Y=4278.599mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C3-2(8844.528mil,4336.063mil) on Top Layer And Pad SW1-2(9096.929mil,4316.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8956.63mil|Location2.X=9263.37mil|Location1.Y=3090.252mil|Location2.Y=3129.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8956.63mil|Location2.X=9263.37mil|Location1.Y=3090.252mil|Location2.Y=3129.748mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C12-2(8970.472mil,3110mil) on Top Layer And Pad C10-1(9249.528mil,3110mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9235.685mil|Location2.X=9544.315mil|Location1.Y=3090.252mil|Location2.Y=3129.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9235.685mil|Location2.X=9544.315mil|Location1.Y=3090.252mil|Location2.Y=3129.748mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C10-1(9249.528mil,3110mil) on Top Layer And Pad R8-2(9530.472mil,3110mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8567.89mil|Location2.X=8945.89mil|Location1.Y=2065.921mil|Location2.Y=2213.921mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8567.89mil|Location2.X=8945.89mil|Location1.Y=2065.921mil|Location2.Y=2213.921mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U2-2(8601.89mil,2089.921mil) on Multi-Layer And Pad U2-8(8911.89mil,2189.921mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3841.984mil|Location2.X=4314.551mil|Location1.Y=3176.63mil|Location2.Y=3314.551mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3841.984mil|Location2.X=4314.551mil|Location1.Y=3176.63mil|Location2.Y=3314.551mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U1-94(3851.89mil,3269.213mil) on Top Layer And Pad U1-74(4269.213mil,3186.535mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8567.89mil|Location2.X=8704.354mil|Location1.Y=1242.535mil|Location2.Y=2113.921mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8567.89mil|Location2.X=8704.354mil|Location1.Y=1242.535mil|Location2.Y=2113.921mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U2-2(8601.89mil,2089.921mil) on Multi-Layer And Pad P2-2(8666.89mil,1280mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7726.63mil|Location2.X=8662.819mil|Location1.Y=3139.189mil|Location2.Y=3333.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7726.63mil|Location2.X=8662.819mil|Location1.Y=3139.189mil|Location2.Y=3333.37mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U3-2(7770mil,3290mil) on Multi-Layer And Pad U4-2(8639.134mil,3155mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9790.39mil|Location2.X=9863.39mil|Location1.Y=1693.421mil|Location2.Y=1866.421mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9790.39mil|Location2.X=9863.39mil|Location1.Y=1693.421mil|Location2.Y=1866.421mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P1-8(9826.89mil,1729.921mil) on Multi-Layer And Pad P1-6(9826.89mil,1829.921mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11211.63mil|Location2.X=11459.315mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11211.63mil|Location2.X=11459.315mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C14-1(11225.472mil,4336.063mil) on Top Layer And Pad C15-1(11445.472mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9110.528mil|Location2.X=9286.638mil|Location1.Y=2101.866mil|Location2.Y=2223.803mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9110.528mil|Location2.X=9286.638mil|Location1.Y=2101.866mil|Location2.Y=2223.803mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad P4-4(9121.417mil,2205.039mil) on Top Layer And Pad D3-2(9266.89mil,2121.614mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=3763.37mil|Location1.Y=3019.15mil|Location2.Y=3314.551mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=3763.37mil|Location1.Y=3019.15mil|Location2.Y=3314.551mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U1-10(3670.787mil,3029.055mil) on Top Layer And Pad U1-99(3753.465mil,3269.213mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8191.63mil|Location2.X=8634.315mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8191.63mil|Location2.X=8634.315mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C2-1(8205.472mil,4336.063mil) on Top Layer And Pad C1-1(8620.472mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7591.63mil|Location2.X=8107.74mil|Location1.Y=4297.89mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7591.63mil|Location2.X=8107.74mil|Location1.Y=4297.89mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C5-1(7605.472mil,4336.063mil) on Top Layer And Pad D5-4(8080.118mil,4319.606mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8877.89mil|Location2.X=8984.315mil|Location1.Y=2165.921mil|Location2.Y=3129.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8877.89mil|Location2.X=8984.315mil|Location1.Y=2165.921mil|Location2.Y=3129.748mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U2-8(8911.89mil,2189.921mil) on Multi-Layer And Pad C12-2(8970.472mil,3110mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9417.142mil|Location2.X=9863.39mil|Location1.Y=1893.421mil|Location2.Y=2141.362mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9417.142mil|Location2.X=9863.39mil|Location1.Y=1893.421mil|Location2.Y=2141.362mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad D4-2(9436.89mil,2121.614mil) on Top Layer And Pad P1-4(9826.89mil,1929.921mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8606.63mil|Location2.X=8662.819mil|Location1.Y=3139.189mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8606.63mil|Location2.X=8662.819mil|Location1.Y=3139.189mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C1-1(8620.472mil,4336.063mil) on Top Layer And Pad U4-2(8639.134mil,3155mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9077.181mil|Location2.X=10509.315mil|Location1.Y=4278.599mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9077.181mil|Location2.X=10509.315mil|Location1.Y=4278.599mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad SW1-2(9096.929mil,4316.063mil) on Top Layer And Pad C7-1(10495.472mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.874mil|Location2.X=7813.37mil|Location1.Y=3176.63mil|Location2.Y=3333.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.874mil|Location2.X=7813.37mil|Location1.Y=3176.63mil|Location2.Y=3333.37mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U1-74(4269.213mil,3186.535mil) on Top Layer And Pad U3-2(7770mil,3290mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.874mil|Location2.X=8635.89mil|Location1.Y=2165.921mil|Location2.Y=2763.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.874mil|Location2.X=8635.89mil|Location1.Y=2165.921mil|Location2.Y=2763.37mil|Absolute=True">Un-Routed Net Constraint: Net CAN2_TX Between Pad U1-52(4269.213mil,2753.465mil) on Top Layer And Pad U2-1(8601.89mil,2189.921mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.874mil|Location2.X=8635.89mil|Location1.Y=1865.921mil|Location2.Y=2743.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.874mil|Location2.X=8635.89mil|Location1.Y=1865.921mil|Location2.Y=2743.685mil|Absolute=True">Un-Routed Net Constraint: Net CAN2_RX Between Pad U1-51(4269.213mil,2733.78mil) on Top Layer And Pad U2-4(8601.89mil,1889.921mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8877.89mil|Location2.X=9286.638mil|Location1.Y=2065.921mil|Location2.Y=2227.976mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8877.89mil|Location2.X=9286.638mil|Location1.Y=2065.921mil|Location2.Y=2227.976mil|Absolute=True">Un-Routed Net Constraint: Net CAN2_P Between Pad U2-7(8911.89mil,2089.921mil) on Multi-Layer And Pad D3-1(9266.89mil,2208.228mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8472.575mil|Location2.X=8945.89mil|Location1.Y=2065.921mil|Location2.Y=2224.669mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8472.575mil|Location2.X=8945.89mil|Location1.Y=2065.921mil|Location2.Y=2224.669mil|Absolute=True">Un-Routed Net Constraint: Net CAN2_P Between Pad R7-2(8486.417mil,2204.921mil) on Top Layer And Pad U2-7(8911.89mil,2089.921mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8747.535mil|Location2.X=8945.89mil|Location1.Y=1360.646mil|Location2.Y=2113.921mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8747.535mil|Location2.X=8945.89mil|Location1.Y=1360.646mil|Location2.Y=2113.921mil|Absolute=True">Un-Routed Net Constraint: Net CAN2_P Between Pad P2-4(8785mil,1398.11mil) on Multi-Layer And Pad U2-7(8911.89mil,2089.921mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8413.52mil|Location2.X=8945.89mil|Location1.Y=1965.921mil|Location2.Y=2224.669mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8413.52mil|Location2.X=8945.89mil|Location1.Y=1965.921mil|Location2.Y=2224.669mil|Absolute=True">Un-Routed Net Constraint: Net CAN2_N Between Pad R7-1(8427.362mil,2204.921mil) on Top Layer And Pad U2-6(8911.89mil,1989.921mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8877.89mil|Location2.X=9456.638mil|Location1.Y=1965.921mil|Location2.Y=2227.976mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8877.89mil|Location2.X=9456.638mil|Location1.Y=1965.921mil|Location2.Y=2227.976mil|Absolute=True">Un-Routed Net Constraint: Net CAN2_N Between Pad U2-6(8911.89mil,1989.921mil) on Multi-Layer And Pad D4-1(9436.89mil,2208.228mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8629.425mil|Location2.X=8945.89mil|Location1.Y=1360.646mil|Location2.Y=2013.921mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8629.425mil|Location2.X=8945.89mil|Location1.Y=1360.646mil|Location2.Y=2013.921mil|Absolute=True">Un-Routed Net Constraint: Net CAN2_N Between Pad P2-5(8666.89mil,1398.11mil) on Multi-Layer And Pad U2-6(8911.89mil,1989.921mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3841.984mil|Location2.X=7789.315mil|Location1.Y=2625.449mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3841.984mil|Location2.X=7789.315mil|Location1.Y=2625.449mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net BLUE_LED Between Pad U1-32(3851.89mil,2670.787mil) on Top Layer And Pad R3-1(7775.472mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7826.63mil|Location2.X=8822.465mil|Location1.Y=1242.535mil|Location2.Y=3333.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7826.63mil|Location2.X=8822.465mil|Location1.Y=1242.535mil|Location2.Y=3333.37mil|Absolute=True">Un-Routed Net Constraint: Net 12V Between Pad U3-1(7870mil,3290mil) on Multi-Layer And Pad P2-1(8785mil,1280mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8615.449mil|Location2.X=8662.819mil|Location1.Y=3101.787mil|Location2.Y=3208.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8615.449mil|Location2.X=8662.819mil|Location1.Y=3101.787mil|Location2.Y=3208.213mil|Absolute=True">Un-Routed Net Constraint: Net 5V Between Pad U4-1(8639.134mil,3117.598mil) on Top Layer And Pad U4-3(8639.134mil,3192.401mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8073.5mil|Location2.X=8436.5mil|Location1.Y=3086mil|Location2.Y=3194mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8073.5mil|Location2.X=8436.5mil|Location1.Y=3086mil|Location2.Y=3194mil|Absolute=True">Un-Routed Net Constraint: Net 5V Between Pad D6-1(8130mil,3140mil) on Top Layer And Pad D7-1(8380mil,3140mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9015.685mil|Location2.X=9433.252mil|Location1.Y=3087.102mil|Location2.Y=3129.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9015.685mil|Location2.X=9433.252mil|Location1.Y=3087.102mil|Location2.Y=3129.748mil|Absolute=True">Un-Routed Net Constraint: Net 5V Between Pad C12-1(9029.528mil,3110mil) on Top Layer And Pad D8-1(9419.409mil,3106.85mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8567.89mil|Location2.X=8662.819mil|Location1.Y=1965.921mil|Location2.Y=3133.409mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8567.89mil|Location2.X=8662.819mil|Location1.Y=1965.921mil|Location2.Y=3133.409mil|Absolute=True">Un-Routed Net Constraint: Net 5V Between Pad U2-3(8601.89mil,1989.921mil) on Multi-Layer And Pad U4-1(8639.134mil,3117.598mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8323.5mil|Location2.X=8662.819mil|Location1.Y=3086mil|Location2.Y=3194mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8323.5mil|Location2.X=8662.819mil|Location1.Y=3086mil|Location2.Y=3194mil|Absolute=True">Un-Routed Net Constraint: Net 5V Between Pad D7-1(8380mil,3140mil) on Top Layer And Pad U4-1(8639.134mil,3117.598mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8615.449mil|Location2.X=9043.37mil|Location1.Y=3090.252mil|Location2.Y=3133.409mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8615.449mil|Location2.X=9043.37mil|Location1.Y=3090.252mil|Location2.Y=3133.409mil|Absolute=True">Un-Routed Net Constraint: Net 5V Between Pad U4-1(8639.134mil,3117.598mil) on Top Layer And Pad C12-1(9029.528mil,3110mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8268.5mil|Location2.X=9763.39mil|Location1.Y=1093.421mil|Location2.Y=3169mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8268.5mil|Location2.X=9763.39mil|Location1.Y=1093.421mil|Location2.Y=3169mil|Absolute=True">Un-Routed Net Constraint: Net 5V-Debug Between Pad D7-2(8287.5mil,3140mil) on Top Layer And Pad P1-19(9726.89mil,1129.921mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7626.63mil|Location2.X=8056.5mil|Location1.Y=3111mil|Location2.Y=3333.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7626.63mil|Location2.X=8056.5mil|Location1.Y=3111mil|Location2.Y=3333.37mil|Absolute=True">Un-Routed Net Constraint: Net 5V - DCDC Between Pad U3-3(7670mil,3290mil) on Multi-Layer And Pad D6-2(8037.5mil,3140mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=3716.126mil|Location1.Y=2782.929mil|Location2.Y=2822.425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=3716.126mil|Location1.Y=2782.929mil|Location2.Y=2822.425mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad U1-22(3670.787mil,2792.835mil) on Top Layer And Pad U1-21(3670.787mil,2812.52mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=3716.126mil|Location1.Y=2802.614mil|Location2.Y=2861.795mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=3716.126mil|Location1.Y=2802.614mil|Location2.Y=2861.795mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad U1-21(3670.787mil,2812.52mil) on Top Layer And Pad U1-19(3670.787mil,2851.89mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=3716.126mil|Location1.Y=2999.465mil|Location2.Y=3117.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=3716.126mil|Location1.Y=2999.465mil|Location2.Y=3117.701mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad U1-11(3670.787mil,3009.37mil) on Top Layer And Pad U1-6(3670.787mil,3107.795mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9430.685mil|Location2.X=9628.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9430.685mil|Location2.X=9628.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad R1-2(9444.528mil,4336.063mil) on Top Layer And Pad R2-2(9614.528mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9260.685mil|Location2.X=9458.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9260.685mil|Location2.X=9458.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad R4-2(9274.528mil,4336.063mil) on Top Layer And Pad R1-2(9444.528mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10540.685mil|Location2.X=10738.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10540.685mil|Location2.X=10738.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad C7-2(10554.528mil,4336.063mil) on Top Layer And Pad C8-2(10724.528mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10880.685mil|Location2.X=11078.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10880.685mil|Location2.X=11078.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad C9-2(10894.528mil,4336.063mil) on Top Layer And Pad C13-2(11064.528mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11710.685mil|Location2.X=11958.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11710.685mil|Location2.X=11958.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad C16-2(11724.528mil,4336.063mil) on Top Layer And Pad C17-2(11944.528mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11050.685mil|Location2.X=11298.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11050.685mil|Location2.X=11298.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad C13-2(11064.528mil,4336.063mil) on Top Layer And Pad C14-2(11284.528mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11490.685mil|Location2.X=11738.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11490.685mil|Location2.X=11738.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad C15-2(11504.528mil,4336.063mil) on Top Layer And Pad C16-2(11724.528mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=3743.685mil|Location1.Y=3097.89mil|Location2.Y=3314.551mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=3743.685mil|Location1.Y=3097.89mil|Location2.Y=3314.551mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad U1-6(3670.787mil,3107.795mil) on Top Layer And Pad U1-100(3733.78mil,3269.213mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=3783.055mil|Location1.Y=2625.449mil|Location2.Y=2802.74mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=3783.055mil|Location1.Y=2625.449mil|Location2.Y=2802.74mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad U1-22(3670.787mil,2792.835mil) on Top Layer And Pad U1-28(3773.15mil,2670.787mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8507.181mil|Location2.X=8764.315mil|Location1.Y=3090.252mil|Location2.Y=3133.409mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8507.181mil|Location2.X=8764.315mil|Location1.Y=3090.252mil|Location2.Y=3133.409mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad U4-5(8530.866mil,3117.598mil) on Top Layer And Pad C6-2(8750.472mil,3110mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3763.244mil|Location2.X=4216.126mil|Location1.Y=2625.449mil|Location2.Y=2716.126mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3763.244mil|Location2.X=4216.126mil|Location1.Y=2625.449mil|Location2.Y=2716.126mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad U1-28(3773.15mil,2670.787mil) on Top Layer And Pad U1-50(4206.221mil,2670.787mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8877.89mil|Location2.X=9073.252mil|Location1.Y=1865.921mil|Location2.Y=2223.803mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8877.89mil|Location2.X=9073.252mil|Location1.Y=1865.921mil|Location2.Y=2223.803mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad U2-5(8911.89mil,1889.921mil) on Multi-Layer And Pad P4-1(9062.362mil,2205.039mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4196.315mil|Location2.X=4314.551mil|Location1.Y=2625.449mil|Location2.Y=3216.126mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4196.315mil|Location2.X=4314.551mil|Location1.Y=2625.449mil|Location2.Y=3216.126mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad U1-50(4206.221mil,2670.787mil) on Top Layer And Pad U1-75(4269.213mil,3206.22mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9051.472mil|Location2.X=9763.39mil|Location1.Y=1993.421mil|Location2.Y=2223.803mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9051.472mil|Location2.X=9763.39mil|Location1.Y=1993.421mil|Location2.Y=2223.803mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad P4-1(9062.362mil,2205.039mil) on Top Layer And Pad P1-1(9726.89mil,2029.921mil) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=3716.126mil|Location1.Y=2841.984mil|Location2.Y=3019.276mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.449mil|Location2.X=3716.126mil|Location1.Y=2841.984mil|Location2.Y=3019.276mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad U1-19(3670.787mil,2851.89mil) on Top Layer And Pad U1-11(3670.787mil,3009.37mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10710.685mil|Location2.X=10908.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10710.685mil|Location2.X=10908.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad C8-2(10724.528mil,4336.063mil) on Top Layer And Pad C9-2(10894.528mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11270.685mil|Location2.X=11518.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11270.685mil|Location2.X=11518.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad C14-2(11284.528mil,4336.063mil) on Top Layer And Pad C15-2(11504.528mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9600.685mil|Location2.X=10568.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9600.685mil|Location2.X=10568.37mil|Location1.Y=4316.315mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad R2-2(9614.528mil,4336.063mil) on Top Layer And Pad C7-2(10554.528mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8736.63mil|Location2.X=9073.252mil|Location1.Y=2186.276mil|Location2.Y=3129.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8736.63mil|Location2.X=9073.252mil|Location1.Y=2186.276mil|Location2.Y=3129.748mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad C6-2(8750.472mil,3110mil) on Top Layer And Pad P4-1(9062.362mil,2205.039mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8736.63mil|Location2.X=9288.37mil|Location1.Y=3090.252mil|Location2.Y=4355.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8736.63mil|Location2.X=9288.37mil|Location1.Y=3090.252mil|Location2.Y=4355.811mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad C6-2(8750.472mil,3110mil) on Top Layer And Pad R4-2(9274.528mil,4336.063mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.874mil|Location2.X=8554.551mil|Location1.Y=3101.787mil|Location2.Y=3216.126mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Motherboard.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4223.874mil|Location2.X=8554.551mil|Location1.Y=3101.787mil|Location2.Y=3216.126mil|Absolute=True">Un-Routed Net Constraint: Net 3V3 Between Pad U1-75(4269.213mil,3206.22mil) on Top Layer And Pad U4-5(8530.866mil,3117.598mil) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
