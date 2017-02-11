@@ -2,3 +2,7 @@
 [0104/134724:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected identifier", source: http://sp.analytics.yahoo.com/sp.pl?a=10001942155268&jsonp=YAHOO.ywa.I13N.handleJSONResponse&d=Wed%2C%2004%20Jan%202017%2020%3A47%3A24%20GMT&n=7&b=Worst%20PCB%20Design%20Advice%20We%27ve%20Heard%20%7C%20Blog%20%7C%20Altium&.yp=429165&f=http%3A%2F%2Fwww.altium.com%2Fblog%2Fworst-advice-we%25E2%2580%2599ve-ever-heard-about-pcb-design&e=http%3A%2F%2Fwww.altium.com%2Fad-start%2F&enc=UTF-8 (1)
 [0104/134725:INFO:CONSOLE(0)] "Refused to execute script from 'https://dc.ads.linkedin.com/collect/?time=1483562844875&pid=15042&url=http%3A%2F%2Fwww.altium.com%2Fblog%2Fworst-advice-we%25E2%2580%2599ve-ever-heard-about-pcb-design&pageUrl=http%3A%2F%2Fwww.altium.com%2Fblog%2Fworst-advice-we%25E2%2580%2599ve-ever-heard-about-pcb-design&ref=http%3A%2F%2Fwww.altium.com%2Fad-start%2F&fmt=js&s=1' because its MIME type ('image/gif') is not executable.", source: http://www.altium.com/blog/worst-advice-we%E2%80%99ve-ever-heard-about-pcb-design (0)
 [0104/134725:INFO:CONSOLE(9)] "Facebook Pixel Warning: Multiple pixels with conflicting versions were detected on this page", source: http://connect.facebook.net/en_US/fbevents.js (9)
+[0207/205205:ERROR:browser_gpu_channel_host_factory.cc(119)] Failed to launch GPU process.
+[0207/212510:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0211/111101:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0211/111106:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
