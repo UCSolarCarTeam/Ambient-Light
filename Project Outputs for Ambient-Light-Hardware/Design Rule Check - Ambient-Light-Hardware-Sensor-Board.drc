@@ -1,56 +1,57 @@
 Protel Design System Design Rule Check
 PCB File : C:\Users\House\Documents\SolarCar\Ambient-Light-Hardware\Ambient-Light-Hardware-Sensor-Board.PcbDoc
 Date     : 2017-02-11
-Time     : 7:16:23 PM
+Time     : 10:01:30 PM
 
-Processing Rule : Clearance Constraint (Gap=0.152mm) (All),(All)
+Processing Rule : Board Clearance Constraint (Gap=0mm) (All)
 Rule Violations :0
 
-Processing Rule : Width Constraint (Min=0.152mm) (Max=2mm) (Preferred=0.25mm) (All)
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
 Rule Violations :0
 
-Processing Rule : Power Plane Connect Rule(Direct Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)
-Rule Violations :0
+Processing Rule : Net Antennae (Tolerance=0mm) (All)
+   Violation between Net Antennae: Via (31.369mm,120.777mm) from Top Layer to Bottom Layer 
+Rule Violations :1
 
-Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
-Rule Violations :0
-
-Processing Rule : Un-Routed Net Constraint ( (All) )
-   Violation between Un-Routed Net Constraint: Net GND Between Pad P5-1(29.467mm,121.424mm) on Bottom Layer And Track (35.047mm,118.745mm)(36.322mm,118.745mm) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net GND Between Pad C11-1(33.389mm,125.603mm) on Bottom Layer And Track (35.047mm,118.745mm)(36.322mm,118.745mm) on Top Layer 
-Rule Violations :2
-
-Processing Rule : Minimum Annular Ring (Minimum=0.15mm) (All)
-Rule Violations :0
-
-Processing Rule : Hole Size Constraint (Min=0.3mm) (Max=6.3mm) (All)
-Rule Violations :0
-
-Processing Rule : Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)
-Rule Violations :0
-
-Processing Rule : Hole To Hole Clearance (Gap=0.45mm) (All),(All)
-Rule Violations :0
-
-Processing Rule : Minimum Solder Mask Sliver (Gap=0.075mm) (All),(All)
+Processing Rule : Silk to Silk (Clearance=0.15mm) (All),(All)
 Rule Violations :0
 
 Processing Rule : Silk To Solder Mask (Clearance=0.25mm) (IsPad),(All)
 Rule Violations :0
 
-Processing Rule : Silk to Silk (Clearance=0.15mm) (All),(All)
+Processing Rule : Minimum Solder Mask Sliver (Gap=0.075mm) (All),(All)
 Rule Violations :0
 
-Processing Rule : Net Antennae (Tolerance=0mm) (All)
-   Violation between Net Antennae: Via (36.322mm,118.745mm) from Top Layer to Bottom Layer 
-Rule Violations :1
-
-Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Processing Rule : Hole To Hole Clearance (Gap=0.45mm) (All),(All)
 Rule Violations :0
 
-Processing Rule : Board Clearance Constraint (Gap=0mm) (All)
+Processing Rule : Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.3mm) (Max=6.3mm) (All)
+Rule Violations :0
+
+Processing Rule : Minimum Annular Ring (Minimum=0.15mm) (All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+   Violation between Un-Routed Net Constraint: Net GND Between Pad U5-2(27.392mm,121.574mm) on Top Layer And Pad P5-1(29.467mm,121.424mm) on Bottom Layer 
+   Violation between Un-Routed Net Constraint: Pad P5-1(29.467mm,121.424mm) on Bottom Layer 
+   Violation between Un-Routed Net Constraint: Pad C11-1(30.341mm,125.73mm) on Bottom Layer 
+Rule Violations :3
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Direct Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.152mm) (Max=2mm) (Preferred=0.25mm) (All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.152mm) (All),(All)
 Rule Violations :0
 
 
-Violations Detected : 3
+Violations Detected : 4
 Time Elapsed        : 00:00:01
