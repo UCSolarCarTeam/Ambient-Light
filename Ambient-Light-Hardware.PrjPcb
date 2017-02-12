@@ -2320,6 +2320,10 @@ DocumentUniqueId=EOKKTDVU
 DocumentPath=Project Outputs for Ambient-Light-Hardware\Design Rule Check - Ambient-Light-Hardware-Motherboard.html
 DItemRevisionGUID=
 
+[GeneratedDocument2]
+DocumentPath=Project Outputs for Ambient-Light-Hardware\Design Rule Check - Ambient-Light-Hardware-Sensor-Board.html
+DItemRevisionGUID=
+
 [Configuration1]
 Name=Sources
 ParameterCount=0
