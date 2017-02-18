@@ -6,3 +6,4 @@
 [0207/212510:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
 [0211/111101:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
 [0211/111106:WARNING:dns_config_service_win.cc(665)] Failed to read DnsConfig.
+[0216/113011:ERROR:browser_gpu_channel_host_factory.cc(119)] Failed to launch GPU process.
