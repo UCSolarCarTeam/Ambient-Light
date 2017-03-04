@@ -1,0 +1,3 @@
+list of Capacitors
+	MCU decopling Capacitors
+	
