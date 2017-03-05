@@ -38,6 +38,7 @@ On Connectors Schematic
 		1: 120 ohm
 On Sensor-Board Schematic
 	none
+Total: 8
 
 List of connectors
 On MCU Schematic
