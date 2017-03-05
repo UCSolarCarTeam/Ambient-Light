@@ -1,3 +1,85 @@
 list of Capacitors
+On MCU Schematic
 	MCU decopling Capacitors
+		9 of them: 0.1uF
+	SingleCap in Parallel wit switch
+		1: 100nF
+	Crystal Capacitors
+		2: 30pF
+	MCU Vcap grounded Capacitors
+		2: 2.2uF
+On Power Schematic
+	LDO 5V decopling cap
+		1: 1uF
+	LDO NR/FB and OUT aka 3V3 cap
+		2: 10nF
+On Connectors Schematic
+	none
+On Sensor-Board Schematic
+	Input 3v3 decoupling cap
+		1: 1uF
+total: 18
+
+list of resistors
+On MCU Schematic
+	I2C Pull Up Resistors
+		2: 4.7k 
+	RGB LED restors
+		1: (red) 0.1 ohm
+		1: (Green) 5.1 ohm
+		1: (Blue) 56 ohm
+	Switch 3v3 power input resistor
+		1: 100k
+On Power Schematic
+	Red Led grounded resistors
+		1: 150 ohm
+On Connectors Schematic
+	Can transiever resistor
+		1: 120 ohm
+On Sensor-Board Schematic
+	none
+
+List of connectors
+On MCU Schematic
+
+On Power Schematic
+
+On Connectors Schematic
+
+On Sensor-Board Schematic 
+
+
+List of Diodes:
+On MCU Schematic
+
+On Power Schematic
+
+On Connectors Schematic
+
+On Sensor-Board Schematic 
+
+
+Unique Items: 
+	MCU
 	
+	Light Sensor
+	
+	Switch
+	
+	Crystal
+	
+	
+	
+	
+
+
+
+
+
+On MCU Schematic
+
+On Power Schematic
+
+On Connectors Schematic
+
+On Sensor-Board Schematic 
