@@ -52,13 +52,19 @@ On Sensor-Board Schematic
 
 List of Diodes:
 On MCU Schematic
-
+	none
 On Power Schematic
-
+	Red LED (5v input)
+		1:
+	5V-DCDC
+		1: Schottky
+	5V-Debug
+		1: Schottky
 On Connectors Schematic
-
+	Can input from microfit
+		2: TVS diodes
 On Sensor-Board Schematic 
-
+total: 5 
 
 Unique Items: 
 	MCU
