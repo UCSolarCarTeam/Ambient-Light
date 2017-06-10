@@ -37,6 +37,16 @@
 
 /* USER CODE BEGIN Includes */
 
+/* Slave Address of LTR-329-ALS-01 Ambient Light Sensor */
+#define	SLAVE_ADDR		0x29
+
+/* Register set of the LTR-329-ALS-01 Ambient Light Sensor */
+#define ALS_CONTR		0x80
+#define	ALS_MEAS_RATE	0x85
+#define	ALS_STATUS		0x8C
+#define ALS_DATA_CH1_00	0x88
+#define ALS_DATA_CH1_01 0x89
+
 /* USER CODE END Includes */
 
 /* Private define ------------------------------------------------------------*/

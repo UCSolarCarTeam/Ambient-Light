@@ -64,7 +64,7 @@ static void MX_USART1_UART_Init(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-
+	uint8_t data[5];
 /* USER CODE END 0 */
 
 int main(void)
@@ -89,7 +89,10 @@ int main(void)
   MX_USART1_UART_Init();
 
   /* USER CODE BEGIN 2 */
-  uint8_t sum = 0;
+  data[1] = 0x01;
+  HAL_I2C_Master_Transmit(&hi2c1, SLAVE_ADDR, &data[1],	2, 50);
+
+  HAL_I2C_Master_Recieve(&hi2c1, SLAVE_ADDR, &data[1], 1, 50);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -97,7 +100,7 @@ int main(void)
   while (1)
   {
   /* USER CODE END WHILE */
-	  sum++;
+
   /* USER CODE BEGIN 3 */
 
   }
