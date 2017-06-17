@@ -64,7 +64,10 @@ static void MX_USART1_UART_Init(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-	uint8_t data[2];
+	uint8_t G_u8write_data[2];
+	uint8_t G_u8read_data[2];
+	uint16_t G_u16parsed_data;
+	uint8_t G_u8status;
 /* USER CODE END 0 */
 
 int main(void)
@@ -91,19 +94,30 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   /* Control registers, enable ALS with a gain of 1X*/
-  data[0] = ALS_CONTR;	// ALS Control Register
-  data[1] = 0x01;		// Gain 1X
-  HAL_I2C_Master_Transmit(&hi2c1, SLAVE_ADDR, data, 2, 100);
+  G_u8write_data[0] = ALS_CONTR;	// ALS Control Register
+  G_u8write_data[1] = 0x01;			// Gain 1X
+  HAL_I2C_Master_Transmit(&hi2c1, SLAVE_ADDR, G_u8write_data, 2, 100);
 
 
   /* Set ALS Measurement Rate and integration time */
-  data[0] = ALS_MEAS_RATE;	// ALS Measurement Rate Register
-  data[1] = 0x12;			// Integration Time = 200ms, Measurement repeat rate = 200ms
-  HAL_I2C_Master_Transmit(&hi2c1, SLAVE_ADDR, data, 2, 100);
+  G_u8write_data[0] = ALS_MEAS_RATE;	// ALS Measurement Rate Register
+  G_u8write_data[1] = 0x12;				// Integration Time = 200ms, Measurement repeat rate = 200ms
+  HAL_I2C_Master_Transmit(&hi2c1, SLAVE_ADDR, G_u8write_data, 2, 100);
 
 
+  /* ALS Data Register Read Low Byte from CH1_00 */
+  G_u8write_data[0] = ALS_DATA_CH1_00;
+  HAL_I2C_Master_Transmit(&hi2c1, SLAVE_ADDR, G_u8write_data, 1, 100);
+  HAL_I2C_Master_Receive(&hi2c1, SLAVE_ADDR, G_u8read_data, 1, 100);
 
-  /* ALS Data Register Read */
+
+  /* ALS Data Register Read High Byte from CH1_01 */
+  G_u8write_data[0] = ALS_DATA_CH1_01;
+  HAL_I2C_Master_Transmit(&hi2c1, SLAVE_ADDR, G_u8write_data, 1, 100);
+  HAL_I2C_Master_Receive(&hi2c1, SLAVE_ADDR, &G_u8read_data[1], 1, 100);
+
+  /* Parse HIGH and LOW bytes to get a 16-bit Ch1 value */
+  G_u16parsed_data = (G_u8read_data[1] << 8) | G_u8read_data[0];
 
 
   /* USER CODE END 2 */
@@ -112,6 +126,11 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  G_u8write_data[0] = ALS_STATUS;
+	  HAL_I2C_Master_Transmit(&hi2c1, SLAVE_ADDR, G_u8write_data, 1, 100);
+	  HAL_I2C_Master_Receive(&hi2c1, SLAVE_ADDR, &G_u8status, 1, 100);
+
+
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
