@@ -64,7 +64,7 @@ static void MX_USART1_UART_Init(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-	uint8_t data[5];
+	uint8_t data[2];
 /* USER CODE END 0 */
 
 int main(void)
@@ -89,10 +89,23 @@ int main(void)
   MX_USART1_UART_Init();
 
   /* USER CODE BEGIN 2 */
-  data[1] = 0x01;
-  HAL_I2C_Master_Transmit(&hi2c1, SLAVE_ADDR, &data[1],	2, 50);
 
-  HAL_I2C_Master_Recieve(&hi2c1, SLAVE_ADDR, &data[1], 1, 50);
+  /* Control registers, enable ALS with a gain of 1X*/
+  data[0] = ALS_CONTR;	// ALS Control Register
+  data[1] = 0x01;		// Gain 1X
+  HAL_I2C_Master_Transmit(&hi2c1, SLAVE_ADDR, data, 2, 100);
+
+
+  /* Set ALS Measurement Rate and integration time */
+  data[0] = ALS_MEAS_RATE;	// ALS Measurement Rate Register
+  data[1] = 0x12;			// Integration Time = 200ms, Measurement repeat rate = 200ms
+  HAL_I2C_Master_Transmit(&hi2c1, SLAVE_ADDR, data, 2, 100);
+
+
+
+  /* ALS Data Register Read */
+
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
